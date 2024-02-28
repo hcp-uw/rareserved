@@ -129,8 +129,8 @@ A 500 status error will be returned if any unexpected conditions occur severside
 
 **Error Handling:** A 500 status error will be returned if any unexpected conditions occur severside.
 
-## Reject a Blog Post
-**Request Format:** /reject
+## Review a Blog Post
+**Request Format:** /review
 
 
 **Request Type:** POST
@@ -139,9 +139,9 @@ A 500 status error will be returned if any unexpected conditions occur severside
 **Returned Data Format** TEXT
 
 
-**Description:** Allows a user to reject and remove a pending blog post from the database.
+**Description:** Allows a client to review a given blog post by either rejecting or accepting that blog post. If rejected it will be removed from the database a a message saying "Blog post by (AUTHOR) titled "(TITLE)" has been rejected.". If it is accepted it will be categorized as accepted in the database and there will be a response of "Blog post by (AUTHOR) titled "(TITLE)" has been approved.". There will be two body parameters. One is the id of the post, and the second is whether or not the blog has been accepted (0 for true and 1 for false).
 
-**Example Request:** Body parameters: ("id" : 7)
+**Example Request:** Body parameters: ("id" : 7, "accepted" : 0)
 
 
 **Example Response:**
@@ -150,4 +150,118 @@ A 500 status error will be returned if any unexpected conditions occur severside
   Blog post by Kristen Gustafson titled "I want your animal jam gems" has been rejected.
 }
 ```
-**Error Handling:** A 500 level response will be returned if an internal server error occurs.
+
+## Add or Edit an Event
+**Request Format:** /event
+
+
+**Request Type:** POST
+
+
+**Returned Data Format** TEXT
+
+
+**Description:** Allows a client to add or edit an event in the database. There will be 8 body parameters. The maximum amount of information needed for an event is the location, date, time range, title, content, secondary content, address and picture. The only required paramter is the title and date. To edit an event call a paramter call with the id number of the event and add any information that is being changed in the parameter body. Below are some formatting notes for the information:
+
+Date
+: MM-DD-YYY
+
+Time (Miliatary Time)
+: HH:MM-HH:MM
+
+Picture
+: Valid URL
+
+**Example Request:** Body parameters: ("location" : "HUB Ballroom","date": "04-20-2024", "time-range": "14:30-17:30", "title" : "Fundraiser", "content" : "Come join us at the HUB and get some cupcakes to support our club! See you there!", "secondary" : "Make sure to bring cash or a valid venmo!", "address" : "4001 E Stevens Way NE", "picture" : "https://picture-at-mysql")
+
+
+**Example Response:**
+```
+
+  Event titled Fundraiser on April 20th, 2024 has been added as an event!
+
+```
+
+**Example Request:** Body parameters: ("id" : 7, "date" : "05-20-2024", "secondary" : "Cupcakes are free!")
+
+
+**Example Response:**
+```
+
+  Event titled "Fundraiser": changed date to 05-20-2024, changed secondary to "Cupcakes are free!"
+
+```
+
+**Error Handling:** A 500 status error will be returned if any unexpected conditions occur severside.
+
+## Add or Edit an Organization
+**Request Format:** /org
+
+
+**Request Type:** POST
+
+
+**Returned Data Format** TEXT
+
+
+**Description:** Allows a client to add or edit an organization in the database. There will be 5 body parameters. The maximum amount of information allowed for an organization is the title, description, website link, city and picture. Only the title is required, and there will be no duplicate titles allowed. To edit an orgnization call this endpoint with the title of the organization and add any information that is being changed in the parameter body.
+
+**Example Request:** Body parameters: ("title" : "RAREHelpers", "content": "RAREHelpers is a Seattle based orgnization that aims to help students with rare dieseases with college tution", "link" : "https://RAREHelpers.org")
+
+
+**Example Response:**
+```
+
+  Organization named "RAREHelpers has been added"!
+
+```
+
+**Example Request:** Body parameters: ("title" : "RAREHelpers", "content" : "RAREHelpers is an organizationt that excepts donations")
+
+
+**Example Response:**
+```
+
+  Organization named "RAREHelpers": changed city to "Kirkland, WA"
+
+```
+
+**Error Handling:** A 500 status error will be returned if any unexpected conditions occur severside. A 400 level error will be returned if a duplicate title is entered.
+
+## Add or Edit an Article
+**Request Format:** /article
+
+
+**Request Type:** POST
+
+
+**Returned Data Format** TEXT
+
+
+**Description:** Allows a client to add or edit an article in the database. There will be 5 body parameters. The maximum amount of information allowed for an article is the date, author, content and picture. All of these parameters are required except for the picture. To edit an article call this endpoint with the id number of the article and add any information that is being changed in the parameter body. You are not allowed to change the date. Below are some formatting notes for the information:
+
+Date
+: MM-DD-YYY
+
+**Example Request:** Body parameters: ("title" : "You should care", "content": "Why you should care aboout this topic is because it is a very important topic.", "author" : "Angel")
+
+
+**Example Response:**
+```
+
+  Article titled "You should care" by Angel has been added!
+
+```
+
+**Example Request:** Body parameters: ("id" : 7, "date" : "title" : "You really really should care")
+
+
+**Example Response:**
+```
+
+  Article titled "You should care": changed title to "You should really really care"
+
+```
+
+**Error Handling:** A 500 status error will be returned if any unexpected conditions occur severside. A 400 level error will be returned if the date is attempted to be changed.
+
