@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState, React } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const baseURL = 'http://localhost:3001';
