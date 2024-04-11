@@ -1,0 +1,1 @@
+this folder is for viewing all blog posts

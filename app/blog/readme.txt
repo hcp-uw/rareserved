@@ -1,0 +1,1 @@
+this folder is for viewing all posts in a list to read

@@ -1,0 +1,1 @@
+this folder is for editing and submitting your own posts

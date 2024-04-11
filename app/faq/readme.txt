@@ -1,0 +1,1 @@
+this folder is for all the faq info
