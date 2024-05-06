@@ -23,6 +23,30 @@
 @layer base {
   * {
     @apply border-foreground/20;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: "Merriweather";
+    font-weight: 700;
+    font-size: 50px;
+    color: #002E40;
+  }
+
+  h2 {
+    font-family: "Merriweather";
+    font-weight: 700;
+    font-size: 30px;
+    color:#175D85;
+  }
+
+  h3 {
+    font-family: "Merriweather";
+    font-weight: 700;
+    font-size: 20px;
+    color:#175D85;
   }
 }
 
@@ -38,5 +62,11 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@layer components {
+  .caption {
+    font-size: 14px;
   }
 }
