@@ -11,7 +11,7 @@ import { StaticImageData } from 'next/image';
  */
 export default function NavigationBar(_props: any) {
   return (
-    <nav className="border border-black bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 relative sticky">
+    <nav className="border border-black bg-white fixed w-full z-20 top-0 start-0 relative sticky">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-left mx-auto px-10 py-0 space-x-px">
         <a href="https://localhost:3000" className="flex items-center space-x-3 rtl:space-x-reverse pl-4 pr-12">
             <img className="object-scale-down h-14 py-1" alt="Logo features low poly two hands holding an open book" src={TEMPLOGO.src}/>
