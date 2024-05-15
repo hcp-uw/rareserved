@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'),
+        url("../fonts/Lato-Regular.ttf");
+}
+
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -26,6 +32,7 @@
     font-weight: 700;
     font-size: 50px;
     color: #002E40;
+    text-align: center
   }
 
   h2 {
@@ -33,6 +40,7 @@
     font-weight: 700;
     font-size: 30px;
     color:#175D85;
+    text-align: center;
   }
 
   h3 {
@@ -40,7 +48,16 @@
     font-weight: 700;
     font-size: 20px;
     color:#175D85;
+    text-align: center
   }
+
+  p {
+    font-family: "Lato";
+    font-size: 18px;
+    font-weight: 500;
+    text-align: justify;
+  }
+
 }
 
 .animate-in {
@@ -61,5 +78,10 @@
 @layer components {
   .caption {
     font-size: 14px;
+  }
+
+  #main {
+    padding-left: 240px;
+    padding-right: 240px;
   }
 }
