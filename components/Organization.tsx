@@ -9,9 +9,11 @@ import { StaticImageData } from 'next/image';
  */
 export default function Organization({content, title, imgPath} : {content:string, title:string, imgPath:string}) {
   console.log(imgPath);
-  return (<div className="flex-auto">
-    <h2>{title}</h2>
-    <p>{content}</p>
-    <img src={TEMPLOGO.src}></img>
+  return (<div>
+    <h3 className="text-left ml-24 mb-2">{title}</h3>
+    <div className="flex">
+      <img src={TEMPLOGO.src} className="max-w-20 flex-initial mr-5"></img>
+      <p>{content}</p>
+    </div>
     </div>);
 }
