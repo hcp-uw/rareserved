@@ -24,7 +24,7 @@
     font-family: "Lato", sans-serif;
     /*TODO check overriding this font size*/
     /* font-size: 18px; */
-    font-weight: 500;
+    font-weight: 400;
   }
 
   h1 {
@@ -54,7 +54,7 @@
   p {
     font-family: "Lato";
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     text-align: justify;
   }
 
