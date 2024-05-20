@@ -6,6 +6,9 @@
   font-family: 'Lato';
   src: local('Lato'),
         url("../fonts/Lato-Regular.ttf");
+  font-family: 'Merriweather';
+  src: local('Merriweather'),
+        url("../fonts/Merriweather-Bold.ttf");
 }
 
 @layer base {
