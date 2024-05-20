@@ -1,9 +1,9 @@
-import DeployButton from "../components/DeployButton";
-import AuthButton from "../components/AuthButton";
+import DeployButton from "../components/tutorial/DeployButton";
+import AuthButton from "../components/tutorial/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
 import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
-import Header from "@/components/Header";
+import Header from "@/components/tutorial/Header";
 import NavigationBar from "@/components/NavigationBar";
 
 export default async function Index() {
