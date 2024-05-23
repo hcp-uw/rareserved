@@ -6,6 +6,9 @@
   font-family: 'Lato';
   src: local('Lato'),
         url("../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
   font-family: 'Merriweather';
   src: local('Merriweather'),
         url("../fonts/Merriweather-Bold.ttf");
@@ -28,6 +31,7 @@
     /*TODO check overriding this font size*/
     /* font-size: 18px; */
     font-weight: 400;
+    max-width: 100%;
   }
 
   h1 {
@@ -58,7 +62,7 @@
     font-family: "Lato";
     font-size: 18px;
     font-weight: 400;
-    text-align: justify;
+    text-align: left;
   }
 
 }
