@@ -14,7 +14,7 @@ export default function Organization(props : {content:string, title:string, imgN
   } else { 
     img = "/images/" + img;
   }
-  return (<div className="pb-70">    
+  return (<div className="pb-70px">    
     <div className="grid grid-cols-[auto_80%]">
       <div style={{ backgroundImage: `url(${img})` }} className="max-w-133px max-h-133px bg-contain bg-no-repeat"/>
         <div className="pl-15 max-h-133px">
