@@ -26,7 +26,6 @@
 
 @layer base {
   * {
-    @apply border-foreground/20;
     font-family: "Lato", sans-serif;
     /*TODO check overriding this font size*/
     /* font-size: 18px; */
