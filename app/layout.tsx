@@ -8,7 +8,7 @@ const defaultUrl = process.env.VERCEL_URL
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "RAREserved",
-  description: "RAREserved is a UW registered student organization bringing attention to rare diseases in our community",
+  description: "RAREserved seeks to amplify voices and make knowledge about rare diseases accessible and engaging",
 };
 
 export default function RootLayout({
