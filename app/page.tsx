@@ -10,6 +10,7 @@ import FullDivider from "@/components/FullDivider";
 import Footer from "@/components/Footer";
 
 
+
 export default async function Index() {
   const canInitSupabaseClient = () => {
     // This function is just for the interactive tutorial.
@@ -27,7 +28,6 @@ export default async function Index() {
   return (
     <>
       <NavigationBar/>
-      <img src="../images/TEMPLOGO.png"></img>
       <div className="w-fit" style = {{backgroundImage: TEMPLOGO.src }}> test</div>
       <div id="main">
         <h1>RAREserved seeks to amplify voices and make knowledge about rare diseases accessible and engaging</h1>
