@@ -1,4 +1,6 @@
-import calendarIcon from "@/images/calendar-icon.svg";
+import calendarIcon from "@/images/icon-calendar.svg";
+import timeIcon from "@/images/icon-time.svg";
+import pinIcon from "@/images/icon-pin.svg";
 
 /**
  * 
@@ -25,17 +27,18 @@ export default function Event(props: {name: string, desc: string, startDate: Dat
         if (props.endDate == undefined) {
             throw new Error("Event '" + props.name + "' must have endDate");
         }
-        timeElement = <p className="font-bold">{props.startDate.toLocaleTimeString("en-US", timeOptions)}–{props.endDate.toLocaleTimeString("en-US", timeOptions)}</p>;
+        timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{props.startDate.toLocaleTimeString("en-US", timeOptions)}–{props.endDate.toLocaleTimeString("en-US", timeOptions)}</p></>;
     }
 
     return(<div>
         <h3 className="mb-2">{props.name}</h3>
         <p className="mb-2">{props.desc}</p>
-        <div className="flex gap-x-10 mb-2">
-            <img src={calendarIcon} alt=""></img>
-            <p className="font-bold">{props.startDate.toLocaleDateString("en-US", dateOptions)}</p>
+        <div className="flex mb-2">
+            <img src={calendarIcon.src} alt="" className="mr-2" />
+            <p className="font-bold mr-10">{props.startDate.toLocaleDateString("en-US", dateOptions)}</p>
             {timeElement}
         </div>
-        <p className="italic">{props.address}</p>
+        <img src={pinIcon.src} alt="" className="mr-2 inline-block align-middle" />
+        <p className="italic inline-block align-middle">{props.address}</p>
     </div>);
 }
