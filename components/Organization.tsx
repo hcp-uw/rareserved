@@ -24,7 +24,7 @@ export default function Organization(_props : {content:string, title:string, img
   return (<div className="pb-70">
     
     <img src={"../images/TEMPLOGO.png"} />
-    <div className="flex-grow grid grid-cols-[15%_80%]">
+    <div className="grid grid-cols-[15%_80%] ml-10px">
       <div style={{ backgroundImage: "url(/TEMPLOGO.src)" }} className="max-w-20 max-h-20"/>
       <div className="ml-30">
         <h3 className="">{_props.title}</h3>
