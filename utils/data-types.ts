@@ -11,6 +11,7 @@ export type RSEvent = { // Change name? event was taken
 export type RSOrganizations = {
     id: number;
     title: string;
+    subtitle: string;
     link: string;
     description: string;
 }
