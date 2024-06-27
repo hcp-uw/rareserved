@@ -5,7 +5,27 @@ export type RSEvent = { // Change name? event was taken
     title: string;
     address: string;
     description: string;
-    Duration: Date; // This is probably wrong
+    full_day: boolean
+}
+
+export const makeEvent = (
+    id: number, 
+    start_date: Date, 
+    end_date: Date,
+    title: string,
+    address: string,
+    description: string,
+    full_day: boolean
+) : RSEvent => {
+    return {
+        id,
+        start_date,
+        end_date,
+        title,
+        address,
+        description,
+        full_day
+    }
 }
 
 export type RSOrganizations = {

@@ -8,6 +8,7 @@ import NavigationBar from "@/components/NavigationBar";
 import TEMPLOGO from '@/images/TEMPLOGO.png';
 import FullDivider from "@/components/FullDivider";
 import Footer from "@/components/Footer";
+import { getEvents } from "@/utils/supabase/load-data";
 
 
 
@@ -24,6 +25,11 @@ export default async function Index() {
   };
 
   const isSupabaseConnected = canInitSupabaseClient();
+
+  getEvents().then((value) => {
+    console.log(value)
+    console.log(typeof(value))
+  });
 
   return (
     <>
