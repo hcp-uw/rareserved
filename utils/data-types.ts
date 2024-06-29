@@ -1,5 +1,5 @@
 export type RSEvent = { // Change name? event was taken
-    id: number;
+    id: number | undefined;
     start_date: Date;
     end_date: Date | null;
     title: string;
@@ -9,7 +9,7 @@ export type RSEvent = { // Change name? event was taken
 }
 
 export const makeEvent = (
-    id: number, 
+    id: number | undefined, 
     start_date: Date, 
     end_date: Date | null,
     title: string,

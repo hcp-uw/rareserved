@@ -24,7 +24,9 @@ export const getEvents = async () : Promise<RSEvent[]> => {
         )
     );
 
-    console.log("Loading Error: " + error?.message);
+    if (error != undefined) {
+        console.log("Loading Error: " + error.message);
+    }
 
     return result;
 } 
@@ -48,7 +50,9 @@ export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {
         )
     );
 
-    console.log("Loading Error: " + error?.message);
+    if (error != undefined) {
+        console.log("Loading Error: " + error.message);
+    }
 
     return result;
 } 
@@ -74,7 +78,9 @@ export const getBlogs = async (amount: number) : Promise<RSBlog[]> => {
         )
     );
 
-    console.log("Loading Error: " + error?.message);
+    if (error != undefined) {
+        console.log("Loading Error: " + error.message);
+    }
 
     return result;
 } 
