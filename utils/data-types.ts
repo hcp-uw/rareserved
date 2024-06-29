@@ -1,7 +1,7 @@
 export type RSEvent = { // Change name? event was taken
     id: number;
     start_date: Date;
-    end_date: Date;
+    end_date: Date | null;
     title: string;
     address: string;
     description: string;
@@ -11,7 +11,7 @@ export type RSEvent = { // Change name? event was taken
 export const makeEvent = (
     id: number, 
     start_date: Date, 
-    end_date: Date,
+    end_date: Date | null,
     title: string,
     address: string,
     description: string,
@@ -28,7 +28,7 @@ export const makeEvent = (
     }
 }
 
-export type RSOrganizations = {
+export type RSOrganization = {
     id: number;
     title: string;
     subtitle: string;
@@ -36,8 +36,48 @@ export type RSOrganizations = {
     description: string;
 }
 
+export const makeOrg = (
+    id: number, 
+    title: string,
+    subtitle: string,
+    link: string,
+    description: string
+) : RSOrganization => {
+    return {
+        id,
+        title,
+        subtitle,
+        link,
+        description
+    }
+}
+
 export type RSBlog = {
     id: number;
-    order_id: number;
-    shipment_date: Date;
+    title: string;
+    subtitle: string;
+    picture: string | null;
+    author: string;
+    text: string;
+    date_posted: Date;
+}
+
+export const makeBlog = (
+    id: number, 
+    title: string,
+    subtitle: string,
+    picture: string | null,
+    author: string,
+    text: string,
+    date_posted: Date
+) : RSBlog => {
+    return {
+        id,
+        title,
+        subtitle,
+        picture,
+        author,
+        text,
+        date_posted
+    }
 }

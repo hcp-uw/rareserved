@@ -1,4 +1,4 @@
-import { RSEvent, RSOrganizations, RSBlog, makeEvent } from "../data-types";
+import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "../data-types";
 import { createClient } from "@/utils/supabase/server";
 
 const supabase = createClient();
@@ -7,11 +7,6 @@ export const getEvents = async () : Promise<RSEvent[]> => {
     const { data, error } = await supabase
     .from('Events')
     .select('*')
-
-    if (data != null) {
-        console.log(data);
-        console.log(data[0]);
-    }
 
     const result : RSEvent[] = [];
 
@@ -29,19 +24,57 @@ export const getEvents = async () : Promise<RSEvent[]> => {
         )
     );
 
-    console.log("Error is: " + error?.message);
+    console.log("Loading Error: " + error?.message);
 
     return result;
 } 
 
-export const setEvent = async (id: number, newEvent: RSEvent) : Promise<RSEvent[]> => {
-    return null!;
-}
+export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {
+    const { data, error } = await supabase
+    .from('Organizations')
+    .select('*')
 
-export const getOrgs = async (amount: number) : Promise<RSOrganizations[]> => {
-    return null!;
+    const result : RSOrganization[] = [];
+
+    data?.forEach( (value, _, __) => 
+        result.push(
+            makeOrg(
+                value.id, 
+                value.title, 
+                value.subtitle, 
+                value.link,
+                value.description
+            )
+        )
+    );
+
+    console.log("Loading Error: " + error?.message);
+
+    return result;
 } 
 
 export const getBlogs = async (amount: number) : Promise<RSBlog[]> => {
-    return null!;
+    const { data, error } = await supabase
+    .from('Blogs')
+    .select('*')
+
+    const result : RSBlog[] = [];
+
+    data?.forEach( (value, _, __) => 
+        result.push(
+            makeBlog(
+                value.id, 
+                value.title, 
+                value.subtitle,
+                value.author, 
+                value.picture,
+                value.text,
+                value.date_posted
+            )
+        )
+    );
+
+    console.log("Loading Error: " + error?.message);
+
+    return result;
 } 
