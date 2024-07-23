@@ -94,14 +94,9 @@
   }
 
   #main {
-    padding-left: 240px;
-    padding-right: 240px;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    height: 100%;
-
     margin-top: 57px; /* Make space for sticky nav bar */
-    overflow: auto;
+    @apply h-full
+      px-[15%] py-[70px]
   }
 
   .full-width {
