@@ -20,7 +20,7 @@ export default function NavigationBar(_props: any) {
           <div className="flex items-center">
               <ul className="flex flex-row font-medium font-sans:Lato font-color:navbar mt-0 text-navbar space-x-12 rtl:space-x-reverse text-sm pl-18">
                   <li>
-                      <a href="/blog" className="pr-6" aria-current="page">Blog</a>
+                      <a href="/specificpost" className="pr-6" aria-current="page">Blog</a>
                   </li>
                   <li>
                       <a href="/faq" className="pr-6">FAQ</a>
