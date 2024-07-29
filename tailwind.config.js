@@ -19,12 +19,15 @@ module.exports = {
       },
       spacing: {
         '9px': '0.563rem',
+        '26px': '1.625rem',
         '38px': '2.375rem',
         '45px': '2.8125rem',
         '48px': '3rem',
+        '60px': '3.75rem',
         '70px': '4.375rem',
         '111px': '6.938rem',
         '133px': '8.313rem',
+        '200px': '12.5rem',
       }
     },
   },
