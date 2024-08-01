@@ -96,7 +96,7 @@
   #main {
     margin-top: 57px; /* Make space for sticky nav bar */
     @apply h-full
-      px-[15%] py-[70px]
+      px-[20%] py-[70px]
   }
 
   .full-width {
