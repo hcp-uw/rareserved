@@ -22,7 +22,7 @@ export default function BlogChunk(props: {imgName?: string, title: string, autho
     // return(<div className="min-w-200px max-w-200px shrink-0">
     return(<div className="w-full space-y-[10px]">
         {picture}
-        <h3>{props.title}</h3>
+        <h3><a href="#">{props.title}</a></h3>
         <p className="caption"><span>By</span> {props.author}</p>
     </div>);
 }
