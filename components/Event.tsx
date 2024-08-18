@@ -38,7 +38,9 @@ export default function Event(props: {name: string, desc: string, startDate: Dat
             <p className="font-bold mr-10">{props.startDate.toLocaleDateString("en-US", dateOptions)}</p>
             {timeElement}
         </div>
-        <img src={pinIcon.src} alt="" className="mr-2 inline-block align-middle" />
-        <p className="italic inline-block align-middle">{props.address}</p>
+        <div className="flex">
+            <img src={pinIcon.src} alt="" className="mr-2 inline-block align-middle" />
+            <p className="italic inline-block align-middle">{props.address}</p>
+        </div>
     </div>);
 }
