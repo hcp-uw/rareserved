@@ -12,6 +12,19 @@ export default async function ProtectedPage() {
     address: "123 Main Street, Anytown, USA 12345"
   };
 
+  // TODO: if no events in list:
+  if (false) {
+    return (<>
+      <NavigationBar></NavigationBar>
+      <div id="main">
+        <h1>Get Involved</h1>
+        <PartialDivider></PartialDivider>
+        <h2 className="mb-4">Events</h2>
+        <p>No events right now. Check back in later!</p>
+      </div>
+    </>);
+  }
+
   return (<>
   <NavigationBar></NavigationBar>
   <div id="main">
