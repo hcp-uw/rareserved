@@ -1,12 +1,13 @@
 import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "../data-types";
-import { createClient } from "@/utils/supabase/server";
+//import { createClient } from "@/utils/supabase/server"; //changed to avoid "from is not a function" error
+import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient();
+const supabase = createClient(); 
 
 export const getEvents = async () : Promise<RSEvent[]> => {
     const { data, error } = await supabase
     .from('Events')
-    .select('*')
+    .select('*'); 
 
     const result : RSEvent[] = [];
 
@@ -28,7 +29,10 @@ export const getEvents = async () : Promise<RSEvent[]> => {
         console.log("Loading Error: " + error.message);
     }
 
-    return result;
+    //return result;
+    return new Promise<RSEvent[]>((resolve, reject) => {
+        resolve(result);
+    });
 } 
 
 export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {

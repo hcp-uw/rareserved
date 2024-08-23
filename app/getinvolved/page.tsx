@@ -1,6 +1,8 @@
 import NavigationBar from "@/components/NavigationBar";
 import PartialDivider from "@/components/PartialDivider";
 import Event from "@/components/Event";
+import {getEvents} from '@/utils/supabase/load-data'
+import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "@/utils/data-types";
 
 export default async function ProtectedPage() {
   const eventInfo = {
@@ -9,8 +11,21 @@ export default async function ProtectedPage() {
     startDate: new Date(2024, 0, 1, 3, 0),
     endDate: new Date(2024, 0, 1, 5, 30),
     allDay: false,
-    address: "123 Main Street, Anytown, USA 12345"
-  };
+    address: "123 Main Street, Anytown, USA 12345"}
+
+    var eventPromise = getEvents();
+    eventPromise.then(
+      (value) => {
+        //console.log(value);
+        //console.log(`The promise has been resolved`);
+        for (let i = 0; i < value.length; i++) {
+          console.log(value[0]);
+        }
+      },
+      (error) => {
+        console.log(`The promise has been rejected: ${error}`)
+      }
+    );
 
   return (<>
   <NavigationBar></NavigationBar>

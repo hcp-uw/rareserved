@@ -1,4 +1,4 @@
-'use client';
+//'use client';
 
 import DeployButton from "../components/tutorial/DeployButton";
 import AuthButton from "../components/tutorial/AuthButton";
@@ -11,6 +11,7 @@ import TEMPLOGO from '@/images/TEMPLOGO.png';
 import FullDivider from "@/components/FullDivider";
 import Footer from "@/components/Footer";
 import Counter from "@/components/testButton";
+import blog from "@/components/testButton";
 import { getEvents } from "@/utils/supabase/load-data";
 import { upsertEvent } from "@/utils/supabase/update-data";
 import { makeEvent } from "@/utils/data-types";

@@ -42,3 +42,7 @@ export default function Event(props: {name: string, desc: string, startDate: Dat
         <p className="italic inline-block align-middle">{props.address}</p>
     </div>);
 }
+
+function getEvents() {
+    get
+}
