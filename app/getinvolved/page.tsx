@@ -17,7 +17,7 @@ export default async function ProtectedPage() {
     allDay: false,
     address: "123 Main Street, Anytown, USA 12345"}
 
-  const eventComponents = events.map(event => Event(event));
+  const eventComponents = events.map((event, index, __) => Event(event, index));
 
   return (<>
     <NavigationBar></NavigationBar>

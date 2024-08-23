@@ -15,7 +15,7 @@ import { RSEvent } from "@/utils/data-types";
  */
 
 // props: {name: string, desc: string, startDate: Date, endDate?: Date, allDay: boolean, address: string}
-export default function Event(event : RSEvent) {
+export default function Event(event : RSEvent, key: Number) {
     const dateOptions: Intl.DateTimeFormatOptions = {
         dateStyle: "long"
     }
@@ -27,13 +27,13 @@ export default function Event(event : RSEvent) {
     let timeElement: JSX.Element = <></>;
     if (!event.full_day) {
         // Throw error if event requires an ending time but no endDate provided
-        if (event.end_date == undefined) {
+        if (event.end_date == undefined || event.end_date == null) {
             throw new Error("Event '" + event.title + "' must have endDate");
         }
-        timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{event.start_date.toLocaleTimeString("en-US", timeOptions)}–{event.end_date.toLocaleTimeString("en-US", timeOptions)}</p></>;
+        timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{event.start_date.toLocaleTimeString("en-US", timeOptions)}-{event.end_date.toLocaleTimeString("en-US", timeOptions)}</p></>;
     }
 
-    return(<div>
+    return(<div key="{key}">
         <h3 className="mb-2">{event.title}</h3>
         <p className="mb-2">{event.description}</p>
         <div className="flex mb-2">
