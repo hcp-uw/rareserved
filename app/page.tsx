@@ -24,10 +24,6 @@ export default async function Index() {
   //   console.log(value)
   //   console.log(typeof(value))
   // });
-
-  const newEvent = makeEvent(undefined, new Date(2024, 6, 29), null, "Code Party", "CSE2", "Coding away", false);
-
-  upsertEvent(newEvent, supabase);
   console.log('Just Updated')
   return (
     <>
