@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default async function ProtectedPage() {
 
-  const [events, setEvents] = useState<RSEvent[]>([]);
+  const events : RSEvent[] = await getEvents();
 
   const eventInfo = {
     name: "Name of Event",
@@ -17,27 +17,17 @@ export default async function ProtectedPage() {
     allDay: false,
     address: "123 Main Street, Anytown, USA 12345"}
 
-    getEvents().then(
-      (value) => {
-        console.log(value);
-        setEvents(value);
-      },
-      (error) => {
-        console.log(`The promise has been rejected: ${error}`);
-      }
-    );
-
-    const eventComponents = events.map(event => Event(event));
+  const eventComponents = events.map(event => Event(event));
 
   return (<>
-  <NavigationBar></NavigationBar>
-  <div id="main">
-    <h1>Get Involved</h1>
-    <PartialDivider></PartialDivider>
-    <h2 className="mb-4">Events</h2>
-    <div className="flex flex-col gap-y-20">
-      {eventComponents}
+    <NavigationBar></NavigationBar>
+    <div id="main">
+      <h1>Get Involved</h1>
+      <PartialDivider></PartialDivider>
+      <h2 className="mb-4">Events</h2>
+      <div className="flex flex-col gap-y-20">
+        {eventComponents}
+      </div>
     </div>
-  </div>
     </>);
 }
