@@ -9,14 +9,6 @@ export default async function ProtectedPage() {
 
   const events : RSEvent[] = await getEvents();
 
-  const eventInfo = {
-    name: "Name of Event",
-    desc: "Once upon a time in a small town lived a boy named Tom. Tom was always sad. He would sit by the riverbank every day, gazing at the water and the ducks, his eyes filled with a profound melancholy that no child his age should bear.",
-    startDate: new Date(2024, 0, 1, 3, 0),
-    endDate: new Date(2024, 0, 1, 5, 30),
-    allDay: false,
-    address: "123 Main Street, Anytown, USA 12345"}
-
   const eventComponents = events.map((event, index, __) => Event(event, index));
 
   return (<>
