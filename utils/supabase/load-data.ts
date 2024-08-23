@@ -14,8 +14,8 @@ export const getEvents = async () : Promise<RSEvent[]> => {
         result.push(
             makeEvent(
                 value.id, 
-                value.start_date, 
-                value.end_date, 
+                new Date(value.start_date), 
+                new Date(value.end_date), 
                 value.title,
                 value.address,
                 value.description,
@@ -76,7 +76,7 @@ export const getBlogs = async (amount: number) : Promise<RSBlog[]> => {
                 value.author, 
                 value.picture,
                 value.text,
-                value.date_posted
+                new Date(value.date_posted)
             )
         )
     );
