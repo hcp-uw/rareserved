@@ -1,6 +1,5 @@
 import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "../data-types";
-//import { createClient } from "@/utils/supabase/server"; //changed to avoid "from is not a function" error
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@/utils/supabase/server"; //changed to avoid "from is not a function" error
 
 const supabase = createClient(); 
 

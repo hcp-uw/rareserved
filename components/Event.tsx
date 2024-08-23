@@ -1,6 +1,7 @@
 import calendarIcon from "@/images/icon-calendar.svg";
 import timeIcon from "@/images/icon-time.svg";
 import pinIcon from "@/images/icon-pin.svg";
+import { RSEvent } from "@/utils/data-types";
 
 /**
  * 
@@ -12,7 +13,9 @@ import pinIcon from "@/images/icon-pin.svg";
  * @param props.address Address of the event
  * @returns Event component
  */
-export default function Event(props: {name: string, desc: string, startDate: Date, endDate?: Date, allDay: boolean, address: string}) {
+
+// props: {name: string, desc: string, startDate: Date, endDate?: Date, allDay: boolean, address: string}
+export default function Event(event : RSEvent) {
     const dateOptions: Intl.DateTimeFormatOptions = {
         dateStyle: "long"
     }
@@ -22,27 +25,27 @@ export default function Event(props: {name: string, desc: string, startDate: Dat
 
     // Element displaying start to end time as long as event is not all-day
     let timeElement: JSX.Element = <></>;
-    if (!props.allDay) {
+    if (!event.full_day) {
         // Throw error if event requires an ending time but no endDate provided
-        if (props.endDate == undefined) {
-            throw new Error("Event '" + props.name + "' must have endDate");
+        if (event.end_date == undefined) {
+            throw new Error("Event '" + event.title + "' must have endDate");
         }
-        timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{props.startDate.toLocaleTimeString("en-US", timeOptions)}–{props.endDate.toLocaleTimeString("en-US", timeOptions)}</p></>;
+        timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{event.start_date.toLocaleTimeString("en-US", timeOptions)}–{event.end_date.toLocaleTimeString("en-US", timeOptions)}</p></>;
     }
 
     return(<div>
-        <h3 className="mb-2">{props.name}</h3>
-        <p className="mb-2">{props.desc}</p>
+        <h3 className="mb-2">{event.title}</h3>
+        <p className="mb-2">{event.description}</p>
         <div className="flex mb-2">
             <img src={calendarIcon.src} alt="" className="mr-2" />
-            <p className="font-bold mr-10">{props.startDate.toLocaleDateString("en-US", dateOptions)}</p>
+            <p className="font-bold mr-10">{event.start_date.toLocaleDateString("en-US", dateOptions)}</p>
             {timeElement}
         </div>
         <img src={pinIcon.src} alt="" className="mr-2 inline-block align-middle" />
-        <p className="italic inline-block align-middle">{props.address}</p>
+        <p className="italic inline-block align-middle">{event.address}</p>
     </div>);
 }
 
 function getEvents() {
-    get
+    
 }

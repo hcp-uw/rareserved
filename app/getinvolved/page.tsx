@@ -3,8 +3,12 @@ import PartialDivider from "@/components/PartialDivider";
 import Event from "@/components/Event";
 import {getEvents} from '@/utils/supabase/load-data'
 import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "@/utils/data-types";
+import { useState } from "react";
 
 export default async function ProtectedPage() {
+
+  const [events, setEvents] = useState<RSEvent[]>([]);
+
   const eventInfo = {
     name: "Name of Event",
     desc: "Once upon a time in a small town lived a boy named Tom. Tom was always sad. He would sit by the riverbank every day, gazing at the water and the ducks, his eyes filled with a profound melancholy that no child his age should bear.",
@@ -13,19 +17,17 @@ export default async function ProtectedPage() {
     allDay: false,
     address: "123 Main Street, Anytown, USA 12345"}
 
-    var eventPromise = getEvents();
-    eventPromise.then(
+    getEvents().then(
       (value) => {
-        //console.log(value);
-        //console.log(`The promise has been resolved`);
-        for (let i = 0; i < value.length; i++) {
-          console.log(value[0]);
-        }
+        console.log(value);
+        setEvents(value);
       },
       (error) => {
-        console.log(`The promise has been rejected: ${error}`)
+        console.log(`The promise has been rejected: ${error}`);
       }
     );
+
+    const eventComponents = events.map(event => Event(event));
 
   return (<>
   <NavigationBar></NavigationBar>
@@ -34,9 +36,7 @@ export default async function ProtectedPage() {
     <PartialDivider></PartialDivider>
     <h2 className="mb-4">Events</h2>
     <div className="flex flex-col gap-y-20">
-      <Event {...eventInfo}></Event>
-      <Event {...eventInfo}></Event>
-      <Event {...eventInfo}></Event>
+      {eventComponents}
     </div>
   </div>
     </>);
