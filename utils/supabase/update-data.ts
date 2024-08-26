@@ -4,6 +4,11 @@ import { createClient } from "@/utils/supabase/server";
 import { SupabaseClient } from "@supabase/supabase-js";
 import { describe } from "node:test";
 
+// TODO: Change upsertOrg to add image data to the database. Also edit the database table 
+// to include an image column.
+// TODO: Make the upsert functions return the id of the item they just added or updated
+// to make it easier to keep track of ids.
+
 /**
  * Updates or adds a given event to the database. If the event is not in the database
  * it will add it, which creates a new id for it. 
