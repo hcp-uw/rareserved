@@ -9,6 +9,12 @@
 }
 
 @font-face {
+  font-family: 'LatoBold';
+  src: local('LatoBold'),
+    url("../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
   font-family: 'Merriweather';
   src: local('Merriweather'),
         url("../fonts/Merriweather-Bold.ttf");
@@ -64,6 +70,17 @@
     text-align: left;
   }
 
+  a {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: inherit;
+  }
+    a:hover {
+      text-decoration: underline;
+    }
+
 }
 
 .animate-in {
@@ -83,12 +100,22 @@
 
 @layer components {
   .caption {
+    font-family: "LatoBold";
     font-size: 14px;
   }
 
   #main {
-    padding-left: 240px;
-    padding-right: 240px;
-    padding-top: 70px;
+    margin-top: 57px; /* Make space for sticky nav bar */
+    @apply h-full
+      px-[20%] py-[70px]
+  }
+
+  .full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
 }
