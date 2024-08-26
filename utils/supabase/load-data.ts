@@ -3,7 +3,10 @@ import { createClient } from "@/utils/supabase/server"; //changed to avoid "from
 
 const supabase = createClient(); 
 
-export const getEvents = async () : Promise<RSEvent[]> => {
+// TODO: Make it so the amount parameter is used in determining
+// how many items to return.
+
+export const getEvents = async (amount? : number) : Promise<RSEvent[]> => {
     const { data, error } = await supabase
     .from('Events')
     .select('*'); 
@@ -34,7 +37,7 @@ export const getEvents = async () : Promise<RSEvent[]> => {
     });
 } 
 
-export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {
+export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
     const { data, error } = await supabase
     .from('Organizations')
     .select('*')
@@ -61,7 +64,7 @@ export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {
     return result;
 } 
 
-export const getBlogs = async (amount: number) : Promise<RSBlog[]> => {
+export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
     const { data, error } = await supabase
     .from('Blogs')
     .select('*')
