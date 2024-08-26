@@ -2,8 +2,7 @@ import NavigationBar from "@/components/NavigationBar";
 import PartialDivider from "@/components/PartialDivider";
 import Event from "@/components/Event";
 import {getEvents} from '@/utils/supabase/load-data'
-import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "@/utils/data-types";
-import { useState } from "react";
+import { RSEvent } from "@/utils/data-types";
 
 export default async function ProtectedPage() {
 
