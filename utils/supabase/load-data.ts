@@ -48,7 +48,8 @@ export const getOrgs = async (amount: number) : Promise<RSOrganization[]> => {
                 value.title, 
                 value.subtitle, 
                 value.link,
-                value.description
+                value.description,
+                value.image
             )
         )
     );

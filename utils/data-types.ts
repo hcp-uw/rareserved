@@ -34,6 +34,7 @@ export type RSOrganization = {
     subtitle: string;
     link: string;
     description: string;
+    image: string
 }
 
 export const makeOrg = (
@@ -41,14 +42,16 @@ export const makeOrg = (
     title: string,
     subtitle: string,
     link: string,
-    description: string
+    description: string,
+    image: string
 ) : RSOrganization => {
     return {
         id,
         title,
         subtitle,
         link,
-        description
+        description,
+        image
     }
 }
 
