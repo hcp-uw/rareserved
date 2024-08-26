@@ -9,14 +9,14 @@ import { RSOrganization } from "@/utils/data-types";
  * 
  * @returns Leftside square image with org title and description
  */
-export default function Organization(org : RSOrganization) { // props : {content:string, title:string, imgName:string}
+export default function Organization(org : RSOrganization, key : Number) { // props : {content:string, title:string, imgName:string}
   let img = org.image;
   if (img === "") {
     img = "/images/orgPlaceholder.png"
   } else { 
     img = "/images/" + img;
   }
-  return (<div className="pb-70px">    
+  return (<div className="pb-70px" key="{key}">    
     <div className="grid grid-cols-[auto_80%]">
       <div style={{ backgroundImage: `url(${img})` }} className="max-w-133px max-h-133px bg-contain bg-no-repeat"/>
         <div className="pl-15 max-h-133px">
