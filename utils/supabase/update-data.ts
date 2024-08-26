@@ -4,6 +4,12 @@ import { createClient } from "@/utils/supabase/server";
 import { SupabaseClient } from "@supabase/supabase-js";
 import { describe } from "node:test";
 
+/**
+ * Updates or adds a given event to the database. If the event is not in the database
+ * it will add it, which creates a new id for it. 
+ * @param event The event to upsert to the database
+ * @param supabase The supabase client linked to the database
+ */
 export const upsertEvent = async (event: RSEvent, supabase: SupabaseClient) => {
     if (event.id == undefined) {
         // Add new event to database
@@ -41,9 +47,15 @@ export const upsertEvent = async (event: RSEvent, supabase: SupabaseClient) => {
     }
 }
 
+/**
+ * Updates or adds a given organization to the database. If the organization is not in the database
+ * it will add it, which creates a new id for it. 
+ * @param organization The organization to upsert to the database
+ * @param supabase The supabase client linked to the database
+ */
 export const upsertOrg = async (organization: RSOrganization, supabase: SupabaseClient) => {
     if (organization.id == undefined) {
-        // Add new event to database
+        // Add new organization to database
         const { data, error } = await supabase
             .from('Organizations')
             .insert({
@@ -57,7 +69,7 @@ export const upsertOrg = async (organization: RSOrganization, supabase: Supabase
                 console.log("Updating Error: " + error.message);
             }
     } else {
-        // Update given event in database
+        // Update given organization in database
         const { data, error } = await supabase
             .from('Organizations')
             .update({
@@ -74,11 +86,17 @@ export const upsertOrg = async (organization: RSOrganization, supabase: Supabase
     }
 }
 
+/**
+ * Updates or adds a given blog to the database. If the blog is not in the database
+ * it will add it, which creates a new id for it. 
+ * @param blog The blog to upsert to the database
+ * @param supabase The supabase client linked to the database
+ */
 export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
     if (blog.id == undefined) {
-        // Add new event to database
+        // Add new blog to database
         const { data, error } = await supabase
-            .from('Events')
+            .from('Blogs')
             .insert({
                 title: blog.title, 
                 subtitle: blog.subtitle, 
@@ -92,9 +110,9 @@ export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
                 console.log("Updating Error: " + error.message);
             }
     } else {
-        // Update given event in database
+        // Update given blog in database
         const { data, error } = await supabase
-            .from('Events')
+            .from('Blogs')
             .update({
                 title: blog.title, 
                 subtitle: blog.subtitle, 
