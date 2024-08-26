@@ -1,3 +1,5 @@
+import { RSOrganization } from "@/utils/data-types";
+
 /** Creates an organization component with the given image, title, and header.
  * 
  * @param props - container for organization information
@@ -7,8 +9,8 @@
  * 
  * @returns Leftside square image with org title and description
  */
-export default function Organization(props : {content:string, title:string, imgName:string}) {
-  let img = props.imgName;
+export default function Organization(org : RSOrganization) { // props : {content:string, title:string, imgName:string}
+  let img = org.image;
   if (img === "") {
     img = "/images/orgPlaceholder.png"
   } else { 
@@ -18,8 +20,8 @@ export default function Organization(props : {content:string, title:string, imgN
     <div className="grid grid-cols-[auto_80%]">
       <div style={{ backgroundImage: `url(${img})` }} className="max-w-133px max-h-133px bg-contain bg-no-repeat"/>
         <div className="pl-15 max-h-133px">
-          <h3 className="">{props.title}</h3>
-          <p>{props.content}</p>
+          <h3 className="">{org.title}</h3>
+          <p>{org.description}</p>
         </div>
       </div>
     </div>);
