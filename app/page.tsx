@@ -19,12 +19,6 @@ import { makeEvent } from "@/utils/data-types";
 
 export default async function Index() {
   const supabase = createClient();
-
-  // getEvents().then((value) => {
-  //   console.log(value)
-  //   console.log(typeof(value))
-  // });
-  console.log('Just Updated')
   return (
     <>
       <NavigationBar/>
