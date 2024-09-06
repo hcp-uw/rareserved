@@ -1,12 +1,11 @@
 import { RSEvent, RSOrganization, RSBlog, makeEvent, makeOrg, makeBlog } from "../data-types";
 import { createClient } from "@/utils/supabase/server"; //changed to avoid "from is not a function" error
 
-const supabase = createClient(); 
-
 // TODO: Make it so the amount parameter is used in determining
 // how many items to return.
 
 export const getEvents = async (amount? : number) : Promise<RSEvent[]> => {
+    var supabase = createClient(); 
     const { data, error } = await supabase
     .from('Events')
     .select('*'); 
@@ -31,16 +30,14 @@ export const getEvents = async (amount? : number) : Promise<RSEvent[]> => {
         console.log("Loading Error: " + error.message);
     }
 
-    //return result;
-    return new Promise<RSEvent[]>((resolve, reject) => {
-        resolve(result);
-    });
+    return result;
 } 
 
 export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
+    var supabase = createClient(); 
     const { data, error } = await supabase
     .from('Organizations')
-    .select('*')
+    .select('*');
 
     const result : RSOrganization[] = [];
 
@@ -52,7 +49,7 @@ export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
                 value.subtitle, 
                 value.link,
                 value.description,
-                value.image
+                ''
             )
         )
     );
@@ -65,6 +62,7 @@ export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
 } 
 
 export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
+    var supabase = createClient(); 
     const { data, error } = await supabase
     .from('Blogs')
     .select('*')
