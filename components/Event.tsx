@@ -33,7 +33,7 @@ export default function Event(event : RSEvent, key: Number) {
         timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{event.start_date.toLocaleTimeString("en-US", timeOptions)}-{event.end_date.toLocaleTimeString("en-US", timeOptions)}</p></>;
     }
 
-    return(<div key="{key}">
+    return(<div key= {key.toString()}>
         <h3 className="mb-2">{event.title}</h3>
         <p className="mb-2">{event.description}</p>
         <div className="flex mb-2">
