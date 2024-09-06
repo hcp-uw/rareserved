@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 
 
 export default async function Index() {
-  const supabase = createClient();
   return (
     <>
       <NavigationBar/>
