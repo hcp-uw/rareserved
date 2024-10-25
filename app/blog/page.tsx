@@ -1,32 +1,14 @@
 import NavigationBar from "@/components/NavigationBar";
 import PartialDivider from "@/components/PartialDivider";
 import BlogChunk from "@/components/BlogChunk";
+import { RSBlog } from "@/utils/data-types";
+import { getBlogs } from "@/utils/supabase/load-data";
 
-export default function Blog() {
-  // TODO this would be data from backend
-  let blogData = [
-    {
-      title: "Blog Number 1",
-      author: "Tom the Sad Boy"
-    },
-    {
-      title: "Blog Number 2: Electric Boogaloo",
-      author: "Bill the Happy Boy"
-    },
-    {
-      title: "Blog Number 3: The Third",
-      author: "Tom Billington"
-    },
-    {
-      title: "Blog Number 4: The Fourth",
-      author: "Team Bill"
-    }
-  ];
+export default async function Blog() {
 
-  let blogChunks: JSX.Element[] = [];
-  for (let i = 0; i < blogData.length; i++) {
-    blogChunks.push(<BlogChunk {...blogData[i]}/>);
-  }
+  const blogs : RSBlog[] = await getBlogs();
+
+  const blogComponents = blogs.map((blog, index, __) => BlogChunk(blog, index))
 
   /*
     With New Post button (removed because currently only admin can make posts):
@@ -44,7 +26,7 @@ export default function Blog() {
       <PartialDivider/>
       <p className="mb-26px">Most recent</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-60px gap-x-60px">
-        {blogChunks}
+        {blogComponents}
       </div>
     </div>
   </>);

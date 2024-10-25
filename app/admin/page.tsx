@@ -1,19 +1,30 @@
-import NavigationBar from "@/components/NavigationBar";
-import NewBlogPost from "@/components/newBlogPost";
+import { redirect } from 'next/navigation'
+import { upsertBlog } from '@/utils/supabase/update-data'
+import { makeBlog } from '@/utils/data-types'
+import { createClient } from '@/utils/supabase/server'
+
+export default async function PrivatePage() {
+  const supabase = await createClient()
+
+  const { data, error } = await supabase.auth.getUser()
+  if (error || !data?.user) {
+    redirect('/login')
+  }
+
+  console.log("Adding a blog");
+  upsertBlog(
+    makeBlog(
+      -1, 
+      "This is a test of really good code.", 
+      "sub title!! :)", 
+      null, 
+      "Zack", 
+      "Tim was a very sad boy", 
+      new Date()
+    ), 
+    supabase
+  );
 
 
-/*export default function Admin() {
-  return (<>
-    <NavigationBar></NavigationBar>
-    <div id="main">
-      <NewBlogPost></NewBlogPost>
-    </div>
-  </>);
+  return <p>Hello {data.user.email}</p>
 }
-
-async function signUpNewUser() {
-  const { data, error } = await supabase.auth.signUp({
-    email: 'example@email.com',
-    password: 'example-password',
-  })
-}*/

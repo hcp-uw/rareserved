@@ -81,6 +81,7 @@ export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
                 new Date(value.date_posted)
             )
         )
+        
     );
 
     if (error != undefined) {
