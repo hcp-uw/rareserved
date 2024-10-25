@@ -98,7 +98,7 @@ export const upsertOrg = async (organization: RSOrganization, supabase: Supabase
  * @param supabase The supabase client linked to the database
  */
 export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
-    if (blog.id == undefined) {
+    if (blog.id == -1) {
         // Add new blog to database
         const { data, error } = await supabase
             .from('Blogs')
