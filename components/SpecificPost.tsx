@@ -7,13 +7,21 @@ export default function FullBlogPost(blog : RSBlog, key : Number) {
   } else {
     img += blog.picture
   }
-  console.log("(" + img + ")");
+
+  const formattedDate = blog.date_posted.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+  });
+
   // TODO: Add check to see if image exists, if not use a default image.
   // TODO: Change .toISOString string later
   return (<div className="pb-70px" key= {key.toString()}>   
       <span className="flex"> 
         <p className="mr-10 font-bold"> {blog.author} </p>
-        <p className="font-normal"> {blog.date_posted.toISOString()} </p>
+        <p className="font-normal"> {formattedDate} </p>
       </span>
       <h1 className="text-left">{blog.title}</h1>
       <h3 className="text-left">{blog.subtitle}</h3>
