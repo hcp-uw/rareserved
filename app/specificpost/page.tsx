@@ -2,9 +2,11 @@ import NavigationBar from "@/components/NavigationBar";
 import SpecificPost from "@/components/SpecificPost";
 
 
-/*export default async function ProtectedPage() {
+export default async function ProtectedPage() {
+  return null;
+}
 
-
+/*
   return (<>
   <NavigationBar/>
   <div id="main">
