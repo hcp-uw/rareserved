@@ -11,9 +11,5 @@ export default async function PrivatePage() {
     redirect('/login')
   }
 
-  return <div>
-    <p>Hello {data.user.email}</p>
-    <h3><a href={'/admin/blogs'}>Edit Blogs</a></h3>
-    <h3><a href={'/admin/events'}>Edit Events</a></h3>
-  </div>
+  return <p>Hello {data.user.email}</p>
 }
