@@ -133,3 +133,15 @@ export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
             }
     }
 }
+
+export const deleteBlog = async (blog: RSBlog) => {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+        .from('Blogs')
+        .delete()
+        .eq('id', blog.id)
+
+    if (error != undefined) {
+        console.log("Deletion Error: " + error.message);
+    }
+}
