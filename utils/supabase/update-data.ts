@@ -145,3 +145,8 @@ export const deleteBlog = async (blog: RSBlog) => {
         console.log("Deletion Error: " + error.message);
     }
 }
+
+export const saveBlog = async (blog: RSBlog) => {
+    const supabase = await createClient()
+    await upsertBlog(blog, supabase);
+}
