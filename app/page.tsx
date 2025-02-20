@@ -24,9 +24,9 @@ export default async function Index() {
         </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-60px gap-x-60px mt-10">
+        {/* <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
         <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
-        <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
-        <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
+        <BlogChunk title="Blog Post" author="Tim"></BlogChunk> */}
         </div>
         <PartialDivider/>
         <div className="grid grid-cols-[auto_80%] items-start">
