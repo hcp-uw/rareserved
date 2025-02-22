@@ -63,9 +63,18 @@ export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
 
 export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
     var supabase = createClient(); 
-    const { data, error } = await supabase
-    .from('Blogs')
-    .select('*')
+    if (amount) {
+        var {data, error} = await supabase
+        .from('Blogs')
+        .select('*')
+        .limit(amount)
+    } else {
+        var { data, error } = await supabase
+        .from('Blogs')
+        .select('*')
+    } 
+
+    
 
     const result : RSBlog[] = [];
 
