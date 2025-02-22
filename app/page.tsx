@@ -1,14 +1,17 @@
-'use client';
-
 import { createClient } from "@/utils/supabase/client";
 import NavigationBar from "@/components/NavigationBar";
 import PartialDivider from "@/components/PartialDivider";
 import Footer from "@/components/Footer";
 import BlogChunk from "@/components/BlogChunk";
+import { getBlogs } from "@/utils/supabase/load-data";
+import { RSBlog } from "@/utils/data-types";
 
 
 
 export default async function Index() {
+  const blogs : RSBlog[] = await getBlogs(3);
+  const blogComponents = blogs.map((blog, index, __) => BlogChunk(blog, index));
+
   return (
     <>
       <NavigationBar/>
@@ -24,9 +27,7 @@ export default async function Index() {
         </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-60px gap-x-60px mt-10">
-        <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
-        <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
-        <BlogChunk title="Blog Post" author="Tim"></BlogChunk>
+        {blogComponents}
         </div>
         <PartialDivider/>
         <div className="grid grid-cols-[auto_80%] items-start">

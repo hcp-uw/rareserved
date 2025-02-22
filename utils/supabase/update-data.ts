@@ -98,7 +98,7 @@ export const upsertOrg = async (organization: RSOrganization, supabase: Supabase
  * @param supabase The supabase client linked to the database
  */
 export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
-    if (blog.id == undefined) {
+    if (blog.id == -1) {
         // Add new blog to database
         const { data, error } = await supabase
             .from('Blogs')
@@ -132,4 +132,21 @@ export const upsertBlog = async (blog: RSBlog, supabase: SupabaseClient) => {
                 console.log("Updating Error: " + error.message);
             }
     }
+}
+
+export const deleteBlog = async (blog: RSBlog) => {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+        .from('Blogs')
+        .delete()
+        .eq('id', blog.id)
+
+    if (error != undefined) {
+        console.log("Deletion Error: " + error.message);
+    }
+}
+
+export const saveBlog = async (blog: RSBlog) => {
+    const supabase = await createClient()
+    await upsertBlog(blog, supabase);
 }

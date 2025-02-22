@@ -63,9 +63,18 @@ export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
 
 export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
     var supabase = createClient(); 
-    const { data, error } = await supabase
-    .from('Blogs')
-    .select('*')
+    if (amount) {
+        var {data, error} = await supabase
+        .from('Blogs')
+        .select('*')
+        .limit(amount)
+    } else {
+        var { data, error } = await supabase
+        .from('Blogs')
+        .select('*')
+    } 
+
+    
 
     const result : RSBlog[] = [];
 
@@ -75,12 +84,13 @@ export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
                 value.id, 
                 value.title, 
                 value.subtitle,
-                value.author, 
                 value.picture,
+                value.author, 
                 value.text,
                 new Date(value.date_posted)
             )
         )
+        
     );
 
     if (error != undefined) {
@@ -88,4 +98,39 @@ export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
     }
 
     return result;
-} 
+}
+
+export const getBlog = async (id : number) : Promise<RSBlog> => {
+    var supabase = createClient(); 
+    const { data, error } = await supabase
+    .from('Blogs')
+    .select('*')
+    .eq('id', id)
+
+    const result : RSBlog[] = [];
+
+    data?.forEach( (value, _, __) => 
+        result.push(
+            makeBlog(
+                value.id, 
+                value.title, 
+                value.subtitle,
+                value.picture,
+                value.author, 
+                value.text,
+                new Date(value.date_posted)
+            )
+        )
+        
+    );
+
+    if (error != undefined) {
+        console.log("Loading Error: " + error.message);
+    }
+
+    if (result.length > 1) {
+        console.error("Multiple blogs with the same id: " + id);
+    }
+
+    return result[0];
+}
