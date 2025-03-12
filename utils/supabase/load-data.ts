@@ -68,10 +68,12 @@ export const getBlogs = async (amount? : number) : Promise<RSBlog[]> => {
         .from('Blogs')
         .select('*')
         .limit(amount)
+        .order('date_posted', {ascending:false})
     } else {
         var { data, error } = await supabase
         .from('Blogs')
         .select('*')
+        .order('date_posted', {ascending:false})
     } 
 
     
