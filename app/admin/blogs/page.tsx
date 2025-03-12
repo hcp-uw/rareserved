@@ -1,17 +1,39 @@
 import { redirect } from 'next/navigation'
 import { RSBlog, makeBlog } from '@/utils/data-types'
 import { createClient } from '@/utils/supabase/server'
-import { getBlogs } from '@/utils/supabase/load-data'
+import { getBlog, getBlogs } from '@/utils/supabase/load-data'
 import EditBlogChunk from '@/components/admin/EditBlogChunk'
 import BlogChunk from '@/components/BlogChunk'
+import FullBlogPost from '@/components/SpecificPost'
+import EditFullBlog from '@/components/admin/EditFullBlog'
 
-export default async function PrivatePage() {
+export default async function Blog({searchParams}: {searchParams: Promise<{id: string }>}) {
+  const { id } = await searchParams
   const supabase = await createClient()
 
   const { data, error } = await supabase.auth.getUser()
   if (error || !data?.user) {
     redirect('/login')
   }
+
+  if (id) {
+    const blog : RSBlog = await getBlog(Number(id));
+      if (!blog) {
+        return (<>
+          <div id="main">
+            <h1> Blog Not Found :(</h1>
+          </div>
+        </>);
+      }
+
+      return (<>
+        <div id="main">
+          <EditFullBlog blog={blog} index ={1} />
+        </div>
+      </>);
+  }
+
+  // If no blog id was given, load default page
 
   const blogs : RSBlog[] = await getBlogs();
 
