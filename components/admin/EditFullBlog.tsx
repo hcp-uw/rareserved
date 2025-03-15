@@ -47,24 +47,24 @@ const EditFullBlog: React.FC<EditFullBlog> = ({blog, index}) => {
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                        <input type="text" id="title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " placeholder="Example Blog Title" defaultValue={blog.title} required />
+                        <input type="text" id="title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Example Blog Title" defaultValue={blog.title} required />
                     </div>
                     <div>
                         <label htmlFor="subtitle" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subtitle</label>
-                        <input type="text" id="subtitle" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " placeholder="Example Blog Subtitle" defaultValue={blog.subtitle} />
+                        <input type="text" id="subtitle" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Example Blog Subtitle" defaultValue={blog.subtitle} />
                     </div>
                     <div>
                         <label htmlFor="picture_url" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Picture Path</label>
-                        <input type="text" id="picture_url" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " placeholder="test1.png" defaultValue={blog.picture ? blog.picture : ""} />
+                        <input type="text" id="picture_url" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="test1.png" defaultValue={blog.picture ? blog.picture : ""} />
                     </div>
                     <div>
                         <label htmlFor="date_posted" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Posted</label>
-                        <input type="datetime-local" id="date_posted" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " defaultValue={blog.date_posted.toISOString().slice(0, -1)} required />
+                        <input type="datetime-local" id="date_posted" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue={blog.date_posted.toISOString().slice(0, -1)} required />
                     </div>  
                 </div>
                 <div className="mb-6">
                     <label htmlFor="author" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author</label>
-                    <input type="text" id="author" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " placeholder="John Doe" defaultValue={blog.author} required />
+                    <input type="text" id="author" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" defaultValue={blog.author} required />
                 </div> 
                 <div className="mb-6">
                     <label htmlFor="body" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text</label>

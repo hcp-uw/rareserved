@@ -6,6 +6,7 @@ import EditBlogChunk from '@/components/admin/EditBlogChunk'
 import BlogChunk from '@/components/BlogChunk'
 import FullBlogPost from '@/components/SpecificPost'
 import EditFullBlog from '@/components/admin/EditFullBlog'
+import PartialDivider from '@/components/PartialDivider'
 
 export default async function Blog({searchParams}: {searchParams: Promise<{id: string }>}) {
   const { id } = await searchParams
@@ -40,6 +41,7 @@ export default async function Blog({searchParams}: {searchParams: Promise<{id: s
   return (<>
     <div id="main">
       <h1>Edit Blog Posts</h1>
+      <PartialDivider></PartialDivider>
       <p className="mb-26px">Most recent</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-60px gap-x-60px">
         {blogs.map((blog, index, __) => (
