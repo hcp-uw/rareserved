@@ -17,6 +17,10 @@ import { describe } from "node:test";
  */
 export const upsertEvent = async (event: RSEvent, supabase: SupabaseClient) => {
     if (event.id == undefined) {
+        console.error('Tried to upsert event with undefined id');
+        return;
+    }
+    if (event.id == -1) {
         // Add new event to database
         const { data, error } = await supabase
             .from('Events')
@@ -147,6 +151,23 @@ export const deleteBlog = async (blog: RSBlog) => {
 }
 
 export const saveBlog = async (blog: RSBlog) => {
-    const supabase = await createClient()
+    const supabase = await createClient();
     await upsertBlog(blog, supabase);
+}
+
+export const saveEvent = async (event: RSEvent) => {
+    const supabase = await createClient();
+    await upsertEvent(event, supabase);
+}
+
+export const deleteEvent = async (event: RSEvent) => {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+        .from('Events')
+        .delete()
+        .eq('id', event.id)
+
+    if (error != undefined) {
+        console.log("Deletion Error: " + error.message);
+    }
 }
