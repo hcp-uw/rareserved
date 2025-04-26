@@ -70,7 +70,11 @@ const EditFullBlog: React.FC<EditFullBlog> = ({blog, index}) => {
                     <label htmlFor="body" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text</label>
                     <textarea name="body" id="body" className="resize-y rounded-md w-full border border-blue-gray-200 p-2.5 min-h-[200px]" placeholder="Blog Text" defaultValue={blog.text} required></textarea>
                 </div>
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                <div className="flow-root">
+                    <button type="submit" className="float-left text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+
+                    <button type="button" className="float-right text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" onClick={router.back}>Cancel</button>
+                </div>
             </form>
         </div>);
 }
