@@ -2,6 +2,7 @@
 import { RSEvent } from "@/utils/data-types";
 import Event from "../Event";
 import { handleDelete } from "@/app/admin/events/actions";
+import { useState } from "react";
 
 /**
  * 
@@ -16,10 +17,17 @@ interface EditEventChunkProps {
 }
 
 const EditEventChunk: React.FC<EditEventChunkProps> = ({event, index}) => {
-    const deleteCallback = async () => await handleDelete(event);
+    const [deleted, setDeleted] = useState<boolean>(false);
+    const deleteCallback = async () => {
+        setDeleted(true);
+        return await handleDelete(event);
+    }
+    if (deleted) {
+        return (<></>);
+    }
     return(<div key= {index.toString() + " with button"}>
-        {Event(event, index)}
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" 
+        {Event(event, index, true)}
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-2 rounded" 
             onClick={deleteCallback}>Delete</button>
     </div>);
 }

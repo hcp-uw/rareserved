@@ -15,7 +15,7 @@ import { RSEvent } from "@/utils/data-types";
  */
 
 // props: {name: string, desc: string, startDate: Date, endDate?: Date, allDay: boolean, address: string}
-export default function Event(event : RSEvent, key: Number) {
+export default function Event(event : RSEvent, key: Number, link: boolean = false) {
     const dateOptions: Intl.DateTimeFormatOptions = {
         dateStyle: "long"
     }
@@ -33,8 +33,10 @@ export default function Event(event : RSEvent, key: Number) {
         timeElement = <><img src={timeIcon.src} alt="" className="mr-2" /><p className="font-bold">{event.start_date.toLocaleTimeString("en-US", timeOptions)}-{event.end_date.toLocaleTimeString("en-US", timeOptions)}</p></>;
     }
 
+    const titleDiv = link ? <a href={'?id=' + event.id} ><h3 className="mb-2">{event.title}</h3></a> : <h3 className="mb-2">{event.title}</h3>;
+
     return(<div key= {key.toString()}>
-        <h3 className="mb-2">{event.title}</h3>
+        {titleDiv}
         <p className="mb-2">{event.description}</p>
         <div className="flex mb-2">
             <img src={calendarIcon.src} alt="" className="mr-2" />
