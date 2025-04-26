@@ -8,7 +8,8 @@ export const getEvents = async (amount? : number) : Promise<RSEvent[]> => {
     var supabase = createClient(); 
     const { data, error } = await supabase
     .from('Events')
-    .select('*'); 
+    .select('*')
+    .order('start_date', {ascending:true});   
 
     const result : RSEvent[] = [];
 
@@ -32,6 +33,41 @@ export const getEvents = async (amount? : number) : Promise<RSEvent[]> => {
 
     return result;
 } 
+
+export const getEvent = async (id : number) : Promise<RSEvent> => {
+    var supabase = createClient(); 
+    const { data, error } = await supabase
+    .from('Events')
+    .select('*')
+    .eq('id', id);
+
+    const result : RSEvent[] = [];
+
+    data?.forEach( (value, _, __) => 
+        result.push(
+            makeEvent(
+                value.id, 
+                new Date(value.start_date), 
+                new Date(value.end_date),
+                value.title,
+                value.address, 
+                value.description,
+                value.full_day
+            )
+        )
+        
+    );
+
+    if (error != undefined) {
+        console.log("Loading Error: " + error.message);
+    }
+
+    if (result.length > 1) {
+        console.error("Multiple events with the same id: " + id);
+    }
+
+    return result[0];
+}
 
 export const getOrgs = async (amount? : number) : Promise<RSOrganization[]> => {
     var supabase = createClient(); 
@@ -136,3 +172,4 @@ export const getBlog = async (id : number) : Promise<RSBlog> => {
 
     return result[0];
 }
+
