@@ -23,7 +23,7 @@ export default function BlogChunk(blog : RSBlog, key : Number) {
     // return(<div className="min-w-200px max-w-200px shrink-0">
     return(<div className="w-full space-y-[10px]" key= {key.toString()}>
         {picture}
-        <h3><a href={'?id=' + blog.id}>{blog.title}</a></h3>
+        <h3><a href={'blogs?id=' + blog.id}>{blog.title}</a></h3>
         <p className="caption"><span>By</span> {blog.author}</p>
     </div>);
 }
