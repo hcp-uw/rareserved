@@ -12,6 +12,7 @@ export default async function PrivatePage() {
   }
 
   return <div>
+    <div className='min-h-[40px]'></div>
     <p>Hello {data.user.email}</p>
     <h3><a href={'/admin/blogs'}>Edit Blogs</a></h3>
     <h3><a href={'/admin/events'}>Edit Events</a></h3>
