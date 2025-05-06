@@ -32,7 +32,6 @@ export default async function Index() {
 
         {/* <button type="button"><a href="/specificpost">CLICKME: To specific post page</a></button> */}
       </div>
-      <Footer/>
     </>
   );
 }
