@@ -25,6 +25,19 @@ export async function login(formData: FormData) {
   redirect('/admin')
 }
 
+export async function logout() {
+  const supabase = await createClient()
+
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    redirect('/error')
+  }
+
+  revalidatePath('/', 'layout') // allows you to purge cached data on-demand for a specific path. 
+  redirect('/')
+}
+
 export async function signup(formData: FormData) {
   const supabase = await createClient()
 
