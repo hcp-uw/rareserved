@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation'
-import { upsertBlog } from '@/utils/supabase/update-data'
-import { makeBlog } from '@/utils/data-types'
 import { createClient } from '@/utils/supabase/server'
+import PartialDivider from '@/components/PartialDivider'
 
 export default async function PrivatePage() {
   const supabase = await createClient()
@@ -11,10 +10,16 @@ export default async function PrivatePage() {
     redirect('/login')
   }
 
-  return <div>
-    <div className='min-h-[40px]'></div>
-    <p>Hello {data.user.email}</p>
-    <h3><a href={'/admin/blogs'}>Edit Blogs</a></h3>
-    <h3><a href={'/admin/events'}>Edit Events</a></h3>
-  </div>
+  return <>
+    <div id="main" className="text-center">
+      <h1>Hello Admin!</h1>
+      <PartialDivider />
+      <button className="mt-5 p-1 bg-darkblue text-white w-80 rounded-full"><a href={'/admin/blogs'}>Edit Blogs</a></button>
+      <br />
+      <button className="mt-5 mb-10 p-1 bg-darkblue text-white w-80 rounded-full"><a href={'/admin/events'}>Edit Events</a></button>
+      <br />
+      <a className="mx-auto cursor-pointer block w-fit mb-4" href="/">Back to regular website</a>
+      {/* TODO implement logout?: <a className="mx-auto cursor-pointer block w-fit" onClick={logout}>Log out</a> */}
+    </div>
+  </>
 }
