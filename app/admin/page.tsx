@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 import PartialDivider from '@/components/PartialDivider'
 import LogoutText from '@/components/admin/LogoutText'
-import { logout } from '../login/actions'
 
 export default async function PrivatePage() {
   const supabase = await createClient()
