@@ -26,9 +26,6 @@ export default function NavigationBar(_props: any) {
                         <a href="/faq" className="pr-6">FAQ</a>
                     </li>
                     <li>
-                        <a href="/organizations" className="pr-6">Organizations</a>
-                    </li>
-                    <li>
                         <a href="/getinvolved" className="">Get Involved</a>
                     </li>
                 </ul>

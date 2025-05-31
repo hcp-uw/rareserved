@@ -41,7 +41,7 @@ export default async function ProtectedPage() {
   <h2 className="mb-5">When and where does the club meet? How can I stay updated?</h2>
   <p className="mb-70px">As of Spring Quarter '25, we meet weekly on Sundays at 5-6pm at Ode Meeting Rooms!
   Meeting times and locations may vary based on everyone’s schedule, but all updates are posted on our Discord.
-    <br/> <a href="https://discord.gg/3UeDt8zFQ7">LINK for "Discord": https://discord.gg/3UeDt8zFQ7</a>
+    <br/> <a href="https://discord.gg/3UeDt8zFQ7" className="text-[#175D85] underline">RAREServed Discord Server</a>
   <br/> <br/>
   Everyone is welcome to join, and no prior writing or journalism experience is required. You’re always welcome to stop by any of our meetings. There’s no expectation to have joined from the beginning of the quarter!
   </p>
@@ -54,7 +54,7 @@ export default async function ProtectedPage() {
   
   <h2 className="mb-5">Can I suggest ideas for events or activities?</h2>
   <p className="mb-70px">Absolutely! We welcome suggestions and love hearing new ideas from members. Bring them up in meetings, share them with us here, or learn more about our weekly meetings by visiting our Meeting Notes! 
-    <br/><a href="linktr.ee/rareserved">LINK: linktr.ee/rareserved</a></p>
+    <br/><a href="https://linktr.ee/rareserved" className="text-[#175D85] underline"> RAREserved resources! </a></p>
   </div>
   </>);
 }
