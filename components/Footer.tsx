@@ -41,9 +41,6 @@ export default function Footer() {
                     <a href="./faq">
                         FAQ
                     </a>
-                    <a href="./organizations">
-                        Organizations
-                    </a>
                     <a href="./getinvolved">
                         Get Involved
                     </a>
