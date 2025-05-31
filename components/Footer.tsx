@@ -35,7 +35,7 @@ export default function Footer() {
                     </a>
                 </div>
                 <div className="space-x-10 text-white">
-                    <a href="./blog">
+                    <a href="./blogs">
                         Blog
                     </a>
                     <a href="./faq">
